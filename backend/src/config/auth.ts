@@ -1,6 +1,6 @@
 export default {
 	jwt: {
-		secret: 'caf172b10e6f7b0226d232cb371851f0-gobarber',
+		secret: process.env.APP_SECRET || 'default',
 		expiresIn: '1d',
 	},
 };
