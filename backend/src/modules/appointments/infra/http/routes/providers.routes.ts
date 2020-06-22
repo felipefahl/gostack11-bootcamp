@@ -2,33 +2,33 @@ import { Router } from 'express';
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 import { celebrate, Segments, Joi } from 'celebrate';
 import ProvidersController from '../controllers/ProvidersController';
-import ProviderMonthAvaiabilityController from '../controllers/ProviderMonthAvaiabilityController';
-import ProviderDayAvaiabilityController from '../controllers/ProviderDayAvaiabilityController';
+import ProviderMonthAvailabilityController from '../controllers/ProviderMonthAvailabilityController';
+import ProviderDayAvailabilityController from '../controllers/ProviderDayAvailabilityController';
 
 const appointmentsRouter = Router();
 const providersController = new ProvidersController();
-const providerMonthAvaiabilityController = new ProviderMonthAvaiabilityController();
-const providerDayAvaiabilityController = new ProviderDayAvaiabilityController();
+const providerMonthAvailabilityController = new ProviderMonthAvailabilityController();
+const providerDayAvailabilityController = new ProviderDayAvailabilityController();
 
 appointmentsRouter.use(ensureAuthenticated);
 appointmentsRouter.get('/', providersController.index);
 appointmentsRouter.get(
-	'/:provider_id/month-avaiability',
+	'/:provider_id/month-availability',
 	celebrate({
 		[Segments.PARAMS]: {
 			provider_id: Joi.string().uuid().required(),
 		},
 	}),
-	providerMonthAvaiabilityController.index,
+	providerMonthAvailabilityController.index,
 );
 appointmentsRouter.get(
-	'/:provider_id/day-avaiability',
+	'/:provider_id/day-availability',
 	celebrate({
 		[Segments.PARAMS]: {
 			provider_id: Joi.string().uuid().required(),
 		},
 	}),
-	providerDayAvaiabilityController.index,
+	providerDayAvailabilityController.index,
 );
 
 export default appointmentsRouter;

@@ -11,11 +11,11 @@ interface IRequest {
 
 type IResponse = Array<{
 	hour: number;
-	avaiable: boolean;
+	available: boolean;
 }>;
 
 @injectable()
-class ListProviderDayAvaiabilityService {
+class ListProviderDayAvailabilityService {
 	constructor(
 		@inject('AppointmentsRepository')
 		private appointmentsRepository: IAppointmentsRepository,
@@ -39,7 +39,7 @@ class ListProviderDayAvaiabilityService {
 
 		const currentDate = new Date(Date.now());
 
-		const avaiability = eachHourArray.map(hour => {
+		const availability = eachHourArray.map(hour => {
 			const appointmentInHour = appointments.find(
 				appointment => getHours(appointment.date) === hour,
 			);
@@ -47,11 +47,11 @@ class ListProviderDayAvaiabilityService {
 
 			return {
 				hour,
-				avaiable: !appointmentInHour && isAfter(compareDate, currentDate),
+				available: !appointmentInHour && isAfter(compareDate, currentDate),
 			};
 		});
-		return avaiability;
+		return availability;
 	}
 }
 
-export default ListProviderDayAvaiabilityService;
+export default ListProviderDayAvailabilityService;

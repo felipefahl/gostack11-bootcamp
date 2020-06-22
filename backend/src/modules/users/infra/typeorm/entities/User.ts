@@ -49,4 +49,4 @@ class User {
 	}
 }
 
-export default User; // https://felipefahl-app-gobarber.s3.amazonaws.com/
+export default User;

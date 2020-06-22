@@ -1,17 +1,17 @@
 import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRepository';
-import ListProviderDayAvaiabilityService from './ListProviderDayAvaiabilityService';
+import ListProviderDayAvailabilityService from './ListProviderDayAvailabilityService';
 
 let fakeAppointmentsRepository: FakeAppointmentsRepository;
-let listProviderDayAvaiability: ListProviderDayAvaiabilityService;
-describe('ListProviderDayAvaiability', () => {
+let listProviderDayAvailability: ListProviderDayAvailabilityService;
+describe('ListProviderDayAvailability', () => {
 	beforeEach(() => {
 		fakeAppointmentsRepository = new FakeAppointmentsRepository();
-		listProviderDayAvaiability = new ListProviderDayAvaiabilityService(
+		listProviderDayAvailability = new ListProviderDayAvailabilityService(
 			fakeAppointmentsRepository,
 		);
 	});
 
-	it('should be able to list month avaiability from provider', async () => {
+	it('should be able to list month availability from provider', async () => {
 		await fakeAppointmentsRepository.create({
 			provider_id: 'provider_id',
 			user_id: 'user_id',
@@ -29,23 +29,23 @@ describe('ListProviderDayAvaiability', () => {
 			return customDate;
 		});
 
-		const avaiability = await listProviderDayAvaiability.execute({
+		const availability = await listProviderDayAvailability.execute({
 			provider_id: 'provider_id',
 			year: 2020,
 			month: 5,
 			day: 20,
 		});
 
-		expect(avaiability).toEqual(
+		expect(availability).toEqual(
 			expect.arrayContaining([
-				{ hour: 8, avaiable: false },
-				{ hour: 9, avaiable: false },
-				{ hour: 10, avaiable: false },
-				{ hour: 11, avaiable: false },
-				{ hour: 12, avaiable: false },
-				{ hour: 13, avaiable: true },
-				{ hour: 14, avaiable: true },
-				{ hour: 15, avaiable: false },
+				{ hour: 8, available: false },
+				{ hour: 9, available: false },
+				{ hour: 10, available: false },
+				{ hour: 11, available: false },
+				{ hour: 12, available: false },
+				{ hour: 13, available: true },
+				{ hour: 14, available: true },
+				{ hour: 15, available: false },
 			]),
 		);
 	});

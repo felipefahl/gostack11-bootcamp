@@ -1,17 +1,17 @@
 import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRepository';
-import ListProviderMonthAvaiabilityService from './ListProviderMonthAvaiabilityService';
+import ListProviderMonthAvailabilityService from './ListProviderMonthAvailabilityService';
 
 let fakeAppointmentsRepository: FakeAppointmentsRepository;
-let listProviderMonthAvaiability: ListProviderMonthAvaiabilityService;
-describe('ListProviderMonthAvaiability', () => {
+let listProviderMonthAvailability: ListProviderMonthAvailabilityService;
+describe('ListProviderMonthAvailability', () => {
 	beforeEach(() => {
 		fakeAppointmentsRepository = new FakeAppointmentsRepository();
-		listProviderMonthAvaiability = new ListProviderMonthAvaiabilityService(
+		listProviderMonthAvailability = new ListProviderMonthAvailabilityService(
 			fakeAppointmentsRepository,
 		);
 	});
 
-	it('should be able to list month avaiability from provider', async () => {
+	it('should be able to list month availability from provider', async () => {
 		const hourStart = 8;
 
 		const promises = Array.from({ length: 10 }, (_, index) => {
@@ -31,18 +31,23 @@ describe('ListProviderMonthAvaiability', () => {
 
 		await Promise.all(promises);
 
-		const avaiability = await listProviderMonthAvaiability.execute({
+		jest.spyOn(Date, 'now').mockImplementation(() => {
+			const customDate = new Date(2020, 4, 18).getTime();
+			return customDate;
+		});
+
+		const availability = await listProviderMonthAvailability.execute({
 			provider_id: 'provider_id',
 			year: 2020,
 			month: 5,
 		});
 
-		expect(avaiability).toEqual(
+		expect(availability).toEqual(
 			expect.arrayContaining([
-				{ day: 19, avaiable: true },
-				{ day: 20, avaiable: false },
-				{ day: 21, avaiable: true },
-				{ day: 22, avaiable: true },
+				{ day: 19, available: true },
+				{ day: 20, available: false },
+				{ day: 21, available: true },
+				{ day: 22, available: true },
 			]),
 		);
 	});
