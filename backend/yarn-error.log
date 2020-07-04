@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @types/rate-limiter-flexible -D
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @babel/cli @babel/core @babel/node @babel/preset-env @babel/preset-typescrpt babel-plugin-module-resolver -D
 
 PATH: 
   C:\Program Files\PowerShell\7-preview;C:\Python27\;C:\Python27\Scripts;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\ProgramData\chocolatey\bin;C:\Users\felip\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\PowerShell\7-preview\preview;C:\Program Files\PowerShell\7\;C:\Program Files (x86)\PowerShell\7-preview\preview;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\felip\AppData\Local\Microsoft\WindowsApps;C:\Users\felip\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\felip\AppData\Local\GitHubDesktop\bin;C:\Users\felip\.dotnet\tools;C:\Users\felip\AppData\Local\Yarn\bin;C:\Android\Sdk\platform-tools;C:\Android\Sdk\tools
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2frate-limiter-flexible: Not found
+  Error: https://registry.yarnpkg.com/@babel%2fpreset-typescrpt: Not found
       at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66096:18)
       at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140748:22)
       at Request.emit (events.js:311:20)
@@ -75,6 +75,7 @@ npm manifest:
       "class-transformer": "^0.2.3",
       "cors": "^2.8.5",
       "date-fns": "^2.12.0",
+      "date-fns-tz": "^1.0.10",
       "dotenv": "^8.2.0",
       "express": "^4.17.1",
       "express-async-errors": "^3.1.1",
@@ -1759,6 +1760,11 @@ Lockfile:
       abab "^2.0.3"
       whatwg-mimetype "^2.3.0"
       whatwg-url "^8.0.0"
+  
+  date-fns-tz@^1.0.10:
+    version "1.0.10"
+    resolved "https://registry.yarnpkg.com/date-fns-tz/-/date-fns-tz-1.0.10.tgz#30fef0038f80534fddd8e133a6b8ca55ba313748"
+    integrity sha512-cHQAz0/9uDABaUNDM80Mj1FL4ODlxs1xEY4b0DQuAooO2UdNKvDkNbV8ogLnxLbv02Ru1HXFcot0pVvDRBgptg==
   
   date-fns@^2.12.0:
     version "2.12.0"
